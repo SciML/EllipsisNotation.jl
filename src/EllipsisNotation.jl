@@ -1,4 +1,4 @@
-module EllipsesNotation
+module EllipsisNotation
 
   import Base.getindex, Base.setindex!
   const ..   = Val{:..}
