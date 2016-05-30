@@ -1,4 +1,4 @@
-The EllipsesNotation.jl package is licensed under the MIT "Expat" License:
+The EllipsisNotation.jl package is licensed under the MIT "Expat" License:
 
 > Copyright (c) 2016: Christopher Rackauckas.
 >
