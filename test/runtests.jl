@@ -1,4 +1,4 @@
-using EllipsesNotation
+using EllipsisNotation
 using Base.Test
 
 A = Array{Int}(2,4,2)
