@@ -1,5 +1,7 @@
 # EllipsesNotation
 
+[![Build Status](https://travis-ci.org/ChrisRackauckas/EllipsesNotation.jl.svg?branch=master)](https://travis-ci.org/ChrisRackauckas/EllipsesNotation.jl) [![Build status](https://ci.appveyor.com/api/projects/status/vg6bk8s3g7sr67uk?svg=true)](https://ci.appveyor.com/project/ChrisRackauckas/ellipsesnotation-jl)
+
 This implements the notation `..` for indexing arrays. It's similar to the Python
 `...` in that it means "all of the columns before (or after)". Due to its implementation
 one can only use implementation indices at the beginning and end of the array (
