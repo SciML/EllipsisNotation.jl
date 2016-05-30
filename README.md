@@ -1,1 +1,48 @@
 # EllipsesNotation
+
+This implements the notation `..` for indexing arrays. It's similar to the Python
+`...` in that it means "all of the columns before (or after)". Due to its implementation
+one can only use implementation indices at the beginning and end of the array (
+i.e. `A[n,..]` or  `A[..,n]`), and the array can only be up to 10 dimensional. However,
+extending the implementation is easy (though a little tedious) and so if you need
+more functionality, please submit a pull request.
+
+# Installation
+
+```julia
+Pkg.add("EllipsesNotation")
+using EllipsesNotation
+```
+
+# Example Usage
+
+```julia
+A = Array{Int}(2,4,2)
+
+A[..,1] = [2 1 4 5
+           2 2 3 6]
+
+A[..,2] = [3 2 6 5
+          3 2 6 6]
+
+A[:,:,1] == [2 1 4 5
+             2 2 3 6] #true
+
+A[1,..] = reshape([3 4
+                  5 6
+                  4 5
+                  6 7],1,4,2) #v0.4 doesn't drop singleton dimension, v0.5 does
+
+B = [3 4
+    5 6
+    4 5
+    6 7]
+
+B == reshape(A[1,..],4,2) #true
+```
+
+# Awknowledgements
+
+I would also like to acknowledge M. Schauer for the `..` notation implementation.
+He had the original idea, I just put it into a package because of how useful
+it has been to me.
