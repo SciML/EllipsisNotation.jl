@@ -41,8 +41,8 @@ B = [3 4
 B == reshape(A[1,..],4,2) #true
 ```
 
-# Awknowledgements
+# Acknowledgements
 
-I would also like to acknowledge M. Schauer for the `..` notation implementation.
-He had the original idea, I just put it into a package because of how useful
-it has been to me.
+I would like to acknowledge M. Schauer for the `..` notation implementation.
+He had the original idea, I just extended it and put it into a package because
+of how useful it has been to me.
