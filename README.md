@@ -1,4 +1,4 @@
-# EllipsesNotation
+# EllipsisNotation.jl
 
 [![Build Status](https://travis-ci.org/ChrisRackauckas/EllipsesNotation.jl.svg?branch=master)](https://travis-ci.org/ChrisRackauckas/EllipsesNotation.jl) [![Build status](https://ci.appveyor.com/api/projects/status/vg6bk8s3g7sr67uk?svg=true)](https://ci.appveyor.com/project/ChrisRackauckas/ellipsesnotation-jl)
 
