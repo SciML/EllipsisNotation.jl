@@ -12,8 +12,8 @@ more functionality, please submit a pull request.
 # Installation
 
 ```julia
-Pkg.add("EllipsesNotation")
-using EllipsesNotation
+Pkg.add("EllipsisNotation")
+using EllipsisNotation
 ```
 
 # Example Usage
