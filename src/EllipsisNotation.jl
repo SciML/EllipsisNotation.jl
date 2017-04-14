@@ -1,3 +1,5 @@
+__precompile__()
+
 module EllipsisNotation
 
   import Base.getindex, Base.setindex!
