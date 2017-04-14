@@ -37,6 +37,8 @@ B = [3 4
     6 7]
 
 B == reshape(A[1,..],4,2) #true
+
+A[..,1,2] # Can do as many integers as you want on the end!
 ```
 
 # Acknowledgements
