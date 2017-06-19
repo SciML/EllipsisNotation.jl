@@ -4,7 +4,7 @@ module EllipsisNotation
 
   import Base.getindex, Base.setindex!
   const .. = Val{:..}()
-  const IndexType = Union{(VERSION < v"0.6-" ? Real : Int), Val{:..}}
+  const IndexType = Union{(VERSION < v"0.6.0-dev+2068" ? Real : Int), Val{:..}}
 
   setindex!{T,N,N2}(A::AbstractArray{T,N}, x, ::Val{:..}, n::Vararg{Int,N2}) = A[(Colon() for i in 1:N-N2)..., n...] = x
   getindex{T,N,N2}(A::AbstractArray{T,N}, ::Val{:..}, n::Vararg{Int,N2}) = A[(Colon() for i in 1:N-N2)..., n...]
