@@ -22,6 +22,6 @@ B = [3 4
      4 5
      6 7]
 
-@test B == reshape(A[1,..],4,2)
+@test B == reshape(A[1,..],4,2) == reshape(view(A, 1,..), 4, 2)
 
-@test A[:,1,2] == A[..,1,2]
+@test A[:,1,2] == A[..,1,2] == @view A[..,1,2]
