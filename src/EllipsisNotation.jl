@@ -18,6 +18,10 @@ const ..   = Val{:..}()
     to_indices(A, inds, (colons..., tail(I)...))
 end
 
+# avoid copying if indexing with .. alone, see
+# https://github.com/JuliaDiffEq/OrdinaryDiffEq.jl/issues/214
+@inline Base.getindex(A::AbstractArray, ::Val{:..}) = A
+
 export ..
 
 end # module
