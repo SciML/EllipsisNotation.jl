@@ -25,3 +25,16 @@ B = [3 4
 @test B == reshape(A[1,..],4,2) == reshape(view(A, 1,..), 4, 2)
 
 @test A[:,1,2] == A[..,1,2] == @view A[..,1,2]
+
+# [..]
+C = zeros(B)
+
+C[:] = B[..]
+@test B == C
+C[1,1] += 1
+@test B != C
+
+C[..] = B[..]
+@test B == C
+C[1,1] += 1
+@test B != C
