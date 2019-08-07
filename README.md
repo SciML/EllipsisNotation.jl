@@ -41,6 +41,13 @@ B == reshape(A[1,..],4,2) #true
 A[..,1,2] # Can do as many integers as you want on the end!
 ```
 
+For avoiding squeezing dimensions from slicing.
+```julia-repl
+julia> C = ones(3,3,3,3,3);
+julia> size(C[1:1, .., 1:1])
+(1, 3, 3, 3, 1)
+```
+
 # Acknowledgements
 
 I would like to acknowledge M. Schauer for the `..` notation implementation.
