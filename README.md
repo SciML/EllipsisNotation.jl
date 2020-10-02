@@ -1,6 +1,6 @@
 # EllipsisNotation.jl
 
-[![Build Status](https://travis-ci.org/ChrisRackauckas/EllipsisNotation.jl.svg?branch=master)](https://travis-ci.org/ChrisRackauckas/EllipsisNotation.jl) [![Build status](https://ci.appveyor.com/api/projects/status/vg6bk8s3g7sr67uk?svg=true)](https://ci.appveyor.com/project/ChrisRackauckas/ellipsesnotation-jl)
+[![Build Status](https://travis-ci.com/ChrisRackauckas/EllipsisNotation.jl.svg?branch=master)](https://travis-ci.com/ChrisRackauckas/EllipsisNotation.jl) [![Build status](https://ci.appveyor.com/api/projects/status/vg6bk8s3g7sr67uk?svg=true)](https://ci.appveyor.com/project/ChrisRackauckas/ellipsesnotation-jl)
 
 This implements the notation `..` for indexing arrays. It's similar to the Python
 `...` in that it means "all of the columns before (or after)".
