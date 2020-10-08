@@ -15,38 +15,47 @@ using EllipsisNotation
 # Example Usage
 
 ```julia
-A = Array{Int}(2,4,2)
+julia> A = Array{Int}(undef,2,4,2)
 
-A[..,1] = [2 1 4 5
-           2 2 3 6]
+julia> A[..,1] = [2 1 4 5
+                 2 2 3 6]
 
-A[..,2] = [3 2 6 5
-          3 2 6 6]
+julia> A[..,2] = [3 2 6 5
+                  3 2 6 6]
 
-A[:,:,1] == [2 1 4 5
-             2 2 3 6] #true
+julia> A[:,:,1] == [2 1 4 5
+                    2 2 3 6]
+true
 
-A[1,..] = reshape([3 4
-                  5 6
-                  4 5
-                  6 7],1,4,2) #v0.4 doesn't drop singleton dimension, v0.5 does
+julia> A[1,..] = reshape([3 4
+                          5 6
+                          4 5
+                          6 7],1,4,2) # drops singleton dimension
 
-B = [3 4
-    5 6
-    4 5
-    6 7]
+julia> B = [3 4
+            5 6
+            4 5
+            6 7]
 
-B == reshape(A[1,..],4,2) #true
+julia> B == reshape(A[1,..],4,2)
+true
 
-A[..,1,2] # Can do as many integers as you want on the end!
+julia> A[..,1,2] # Can do as many integers as you want on the end!
 ```
 
 For avoiding squeezing dimensions from slicing.
-```julia-repl
+```julia
 julia> C = ones(3,3,3,3,3);
 julia> size(C[1:1, .., 1:1])
 (1, 3, 3, 3, 1)
 ```
+
+Note: `..` slurps dimensions greedily, meaning that the first occurrence
+of `..` in an index expression creates as many slices as possible. Other
+instances of `..` afterwards are treated simply as slices. Usually, you
+should only use one instance of `..` in an indexing expression to avoid
+possible confusion.
+
 
 # Acknowledgements
 
