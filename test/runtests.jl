@@ -1,5 +1,5 @@
 using EllipsisNotation
-using Base.Test
+using Test
 
 include("basic.jl")
 include("more_generic.jl")
