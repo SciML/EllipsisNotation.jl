@@ -1,3 +1,4 @@
+using ArrayInterface
 using EllipsisNotation
 using Test
 
