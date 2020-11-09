@@ -42,6 +42,10 @@ true
 """
 module EllipsisNotation
 
+using ArrayInterface
+using ArrayInterface: indices
+
+
 import Base: to_indices, tail
 
 struct Ellipsis end
@@ -53,9 +57,24 @@ const ..   = Ellipsis()
     to_indices(A, inds, (colons..., tail(I)...))
 end
 
+Base.@propagate_inbounds function ArrayInterface.to_indices(A, inds::Tuple{Vararg{Any,M}}, I::Tuple{Ellipsis,Vararg{Any, N}}) where {M,N}
+    return ArrayInterface.to_indices(A, inds, (ntuple(i -> indices(inds[i]), Val(M-N))..., tail(I)...))
+end
+ArrayInterface.to_indices(A, inds::Tuple{}, I::Tuple{Ellipsis}) = ()
+ArrayInterface.is_linear_indexing(A, args::Tuple{Arg}) where {Arg<:Ellipsis} = false
+
+
+#=
+ArrayInterface.can_flatten(::Type{A}, ::Type{T}) where {A,T<:Ellipsis} = true
+@inline function ArrayInterface.flatten_args(A, args::Tuple{Arg,Vararg{Any,N}}) where {Arg<:Ellipsis,N}
+    return (ntuple(i -> indices(axes(A, i)), Val(ndims(A) - N))..., flatten_args(A, tail(args))...)
+end
+=#
+
 # avoid copying if indexing with .. alone, see
 # https://github.com/JuliaDiffEq/OrdinaryDiffEq.jl/issues/214
 @inline Base.getindex(A::AbstractArray, ::Ellipsis) = A
+@inline ArrayInterface.getindex(A, ::Ellipsis) = A
 
 export ..
 
