@@ -60,6 +60,9 @@ C[..] .= B[..]
 C[1,1] += 1
 @test B != C
 
+@test B[:] == B[..]
+@test B[:] !== B[..]
+
 @testset "ArrayInterface" begin
     A = Array{Int}(undef,2,4,2)
     ArrayInterface.setindex!(A, [2 1 4 5; 2 2 3 6], .., 1)
