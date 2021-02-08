@@ -1,3 +1,6 @@
+
+@test isempty(detect_ambiguities(EllipsisNotation))
+
 A = Array{Int}(undef,2,4,2)
 
 A[..,1] = [2 1 4 5
@@ -34,13 +37,25 @@ B = [3 4
 
 # [..]
 C = zero(B)
-
 C[:] = B[..]
 @test B == C
 C[1,1] += 1
 @test B != C
 
+C = zero(B)
 C[..] = B[..]
+@test B == C
+C[1,1] += 1
+@test B != C
+
+C = zero(B)
+C[..] .= B[:]
+@test B == C
+C[1,1] += 1
+@test B != C
+
+C = zero(B)
+C[..] .= B[..]
 @test B == C
 C[1,1] += 1
 @test B != C
