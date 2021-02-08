@@ -71,11 +71,6 @@ ArrayInterface.can_flatten(::Type{A}, ::Type{T}) where {A,T<:Ellipsis} = true
 end
 =#
 
-# avoid copying if indexing with .. alone, see
-# https://github.com/JuliaDiffEq/OrdinaryDiffEq.jl/issues/214
-@inline Base.getindex(A::AbstractArray, ::Ellipsis) = A
-@inline ArrayInterface.getindex(A, ::Ellipsis) = A
-
 export ..
 
 end # module
