@@ -61,15 +61,6 @@ Base.@propagate_inbounds function ArrayInterface.to_indices(A, inds::Tuple{Varar
     return ArrayInterface.to_indices(A, inds, (ntuple(i -> indices(inds[i]), Val(M-N))..., tail(I)...))
 end
 ArrayInterface.to_indices(A, inds::Tuple{}, I::Tuple{Ellipsis}) = ()
-ArrayInterface.is_linear_indexing(A, args::Tuple{Arg}) where {Arg<:Ellipsis} = false
-
-
-#=
-ArrayInterface.can_flatten(::Type{A}, ::Type{T}) where {A,T<:Ellipsis} = true
-@inline function ArrayInterface.flatten_args(A, args::Tuple{Arg,Vararg{Any,N}}) where {Arg<:Ellipsis,N}
-    return (ntuple(i -> indices(axes(A, i)), Val(ndims(A) - N))..., flatten_args(A, tail(args))...)
-end
-=#
 
 export ..
 
