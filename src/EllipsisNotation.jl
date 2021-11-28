@@ -43,13 +43,11 @@ true
 module EllipsisNotation
 
 using ArrayInterface
-using ArrayInterface: indices
-
 
 import Base: to_indices, tail
 
 struct Ellipsis end
-const ..   = Ellipsis()
+const ..  = Ellipsis()
 
 @inline function to_indices(A, inds::NTuple{M, Any}, I::Tuple{Ellipsis, Vararg{Any, N}}) where {M,N}
     # Align the remaining indices to the tail of the `inds`
@@ -57,10 +55,9 @@ const ..   = Ellipsis()
     to_indices(A, inds, (colons..., tail(I)...))
 end
 
-Base.@propagate_inbounds function ArrayInterface.to_indices(A, inds::Tuple{Vararg{Any,M}}, I::Tuple{Ellipsis,Vararg{Any, N}}) where {M,N}
-    return ArrayInterface.to_indices(A, inds, (ntuple(i -> indices(inds[i]), Val(M-N))..., tail(I)...))
-end
-ArrayInterface.to_indices(A, inds::Tuple{}, I::Tuple{Ellipsis}) = ()
+ArrayInterface.is_splat_index(::Type{Ellipsis}) = ArrayInterface.static(true)
+ArrayInterface.ndims_index(::Type{Ellipsis}) = ArrayInterface.static(1)
+ArrayInterface.to_index(x, ::Ellipsis) = ntuple(i -> ArrayInterface.indices(x, i), Val(ndims(x)))
 
 export ..
 

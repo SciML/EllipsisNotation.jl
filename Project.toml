@@ -1,11 +1,11 @@
 name = "EllipsisNotation"
 uuid = "da5c29d0-fa7d-589e-88eb-ea29b0a81949"
 authors = ["Chris Rackauckas <accounts@chrisrackauckas.com>"]
-version = "1.1.1"
+version = "1.1.2"
 
 [deps]
 ArrayInterface = "4fba245c-0d91-5ea0-9b3e-6abc04ee57a9"
 
 [compat]
-julia = "1.5"
 ArrayInterface = "3"
+julia = "1.5"
