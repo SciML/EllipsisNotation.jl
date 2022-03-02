@@ -3,4 +3,4 @@ ArrayInterface = "4fba245c-0d91-5ea0-9b3e-6abc04ee57a9"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
-ArrayInterface = "3, 4"
+ArrayInterface = "3, 4, 5"
