@@ -7,5 +7,5 @@ version = "1.4.0"
 ArrayInterface = "4fba245c-0d91-5ea0-9b3e-6abc04ee57a9"
 
 [compat]
-ArrayInterface = "3.2, 4"
+ArrayInterface = "3.2, 4, 5"
 julia = "1.5"
