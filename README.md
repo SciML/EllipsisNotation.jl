@@ -56,6 +56,12 @@ instances of `..` afterwards are treated simply as slices. Usually, you
 should only use one instance of `..` in an indexing expression to avoid
 possible confusion.
 
+**Warning:** `..` does not work when indexing also with `end` or `begin`.
+For example, `A = randn(2,3,4); A[.., 1:end]` will not give the intended
+result. This is a known limitation, and is not likely to be fixed until
+some necessary changes in the Julia language itself are implemented. See
+https://github.com/ChrisRackauckas/EllipsisNotation.jl/issues/19
+for more details.
 
 # Acknowledgements
 
