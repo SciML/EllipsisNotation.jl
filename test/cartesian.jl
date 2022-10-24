@@ -1,6 +1,6 @@
 @testset "CartesianIndex" begin
     A = rand(4, 4, 4, 4, 4)
-    @test A[.., 1, 2, 3] == A[.., CartesianIndex(1,2,3)]
+    @test A[.., 1, 2, 3] == A[.., CartesianIndex(1, 2, 3)]
     @test A[1, .., 2, 3] == A[CartesianIndex(1), .., CartesianIndex(2, 3)]
     @test A[1, 2, .., 3] == A[CartesianIndex(1, 2), .., CartesianIndex(3)]
 

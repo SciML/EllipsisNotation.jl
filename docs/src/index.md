@@ -1,26 +1,21 @@
 # EllipsisNotation.jl
+**EllipsisNotation.jl** implements the notation `..` for indexing arrays. It's similar to the Python
+`...` in that it means 'all of the columns before (or after)'.
 
-[![Join the chat at https://julialang.zulipchat.com #sciml-bridged](https://img.shields.io/static/v1?label=Zulip&message=chat&color=9558b2&labelColor=389826)](https://julialang.zulipchat.com/#narrow/stream/279055-sciml-bridged)
-[![Global Docs](https://img.shields.io/badge/docs-SciML-blue.svg)](https://docs.sciml.ai/EllipsisNotation/stable/)
+`..` slurps dimensions greedily, meaning that the first occurrence
+of `..` in an index expression creates as many slices as possible. Other
+instances of `..` afterwards are treated simply as slices. Usually, you
+should only use one instance of `..` in an indexing expression to avoid
+possible confusion.
 
-[![codecov](https://codecov.io/gh/SciML/EllipsisNotation.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/SciML/EllipsisNotation.jl)
-[![Build Status](https://github.com/SciML/EllipsisNotation.jl/workflows/CI/badge.svg)](https://github.com/SciML/EllipsisNotation.jl/actions?query=workflow%3ACI)
-
-[![ColPrac: Contributor's Guide on Collaborative Practices for Community Packages](https://img.shields.io/badge/ColPrac-Contributor's%20Guide-blueviolet)](https://github.com/SciML/ColPrac)
-[![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&message=SciML&color=9558b2&labelColor=389826)](https://github.com/SciML/SciMLStyle)
-
-
-This implements the notation `..` for indexing arrays. It's similar to the Python
-`...` in that it means "all of the columns before (or after)".
-
-# Installation
+## Installation
 
 ```julia
 Pkg.add("EllipsisNotation")
 using EllipsisNotation
 ```
 
-# Example Usage
+## Example Usage
 
 ```julia
 julia> A = Array{Int}(undef,2,4,2)
@@ -71,7 +66,21 @@ some necessary changes in the Julia language itself are implemented. See
 https://github.com/ChrisRackauckas/EllipsisNotation.jl/issues/19
 for more details.
 
-# Acknowledgements
+## Contributing
+
+- Please refer to the
+  [SciML ColPrac: Contributor's Guide on Collaborative Practices for Community Packages](https://github.com/SciML/ColPrac/blob/master/README.md)
+  for guidance on PRs, issues, and other matters relating to contributing to SciML.
+- See the [SciML Style Guide](https://github.com/SciML/SciMLStyle) for common coding practices and other style decisions.
+- There are a few community forums:
+    - The #diffeq-bridged and #sciml-bridged channels in the
+      [Julia Slack](https://julialang.org/slack/)
+    - The #diffeq-bridged and #sciml-bridged channels in the
+      [Julia Zulip](https://julialang.zulipchat.com/#narrow/stream/279055-sciml-bridged)
+    - On the [Julia Discourse forums](https://discourse.julialang.org)
+    - See also [SciML Community page](https://sciml.ai/community/)
+
+## Acknowledgements
 
 I would like to acknowledge M. Schauer for the `..` notation implementation.
 He had the original idea, I just extended it and put it into a package because
