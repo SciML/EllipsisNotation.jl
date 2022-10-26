@@ -50,24 +50,24 @@ true
 """
 const .. = Ellipsis()
 
-@inline function to_indices(
-    A,
-    inds::NTuple{M,Any},
-    I::Tuple{Ellipsis,Vararg{Any,N}},
-) where {M,N}
+@inline function to_indices(A,
+                            inds::NTuple{M, Any},
+                            I::Tuple{Ellipsis, Vararg{Any, N}}) where {M, N}
     # Align the remaining indices to the tail of the `inds`
     colons = ntuple(n -> Colon(), M - _ndims_index(I) + 1)
     to_indices(A, inds, (colons..., tail(I)...))
 end
 
 @inline _ndims_index(inds::Tuple{}) = ArrayInterface.static(0)
-@inline _ndims_index(inds::Tuple) =
+@inline function _ndims_index(inds::Tuple)
     ArrayInterface.ndims_index(inds[1]) + _ndims_index(tail(inds))
+end
 
 ArrayInterface.is_splat_index(::Type{Ellipsis}) = ArrayInterface.static(true)
 ArrayInterface.ndims_index(::Type{Ellipsis}) = ArrayInterface.static(1)
-ArrayInterface.to_index(x, ::Ellipsis) =
+function ArrayInterface.to_index(x, ::Ellipsis)
     ntuple(i -> ArrayInterface.indices(x, i), Val(ndims(x)))
+end
 
 export ..
 

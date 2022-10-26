@@ -1,7 +1,7 @@
 B = Array{Int}(undef, 2, 3, 4, 5, 6)
 
 n = 0
-for i5 = 1:6, i4 = 1:5, i3 = 1:4
+for i5 in 1:6, i4 in 1:5, i3 in 1:4
     global n += 1
     B[.., i3, i4, i5] .= n
 end
@@ -26,7 +26,7 @@ end
 C = Array{Int}(undef, 2, 3, 4, 5, 6)
 
 n = 0
-for i3 = 1:4, i2 = 1:3, i1 = 1:2
+for i3 in 1:4, i2 in 1:3, i1 in 1:2
     global n += 1
     C[i1, i2, i3, ..] .= n
 end
@@ -50,4 +50,4 @@ end
 
 D = ones(Int, 1, 2, 3, 4)
 D[1, .., 2] .= 2
-@test D == [i1 == 1 && i4 == 2 ? 2 : 1 for i1 = 1:1, i2 = 1:2, i3 = 1:3, i4 = 1:4]
+@test D == [i1 == 1 && i4 == 2 ? 2 : 1 for i1 in 1:1, i2 in 1:2, i3 in 1:3, i4 in 1:4]
