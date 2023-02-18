@@ -2,7 +2,7 @@ __precompile__()
 
 module EllipsisNotation
 
-using ArrayInterface
+using StaticArrayInterface
 
 import Base: to_indices, tail
 
@@ -58,15 +58,15 @@ const .. = Ellipsis()
     to_indices(A, inds, (colons..., tail(I)...))
 end
 
-@inline _ndims_index(inds::Tuple{}) = ArrayInterface.static(0)
+@inline _ndims_index(inds::Tuple{}) = StaticArrayInterface.static(0)
 @inline function _ndims_index(inds::Tuple)
-    ArrayInterface.ndims_index(inds[1]) + _ndims_index(tail(inds))
+    StaticArrayInterface.ndims_index(inds[1]) + _ndims_index(tail(inds))
 end
 
-ArrayInterface.is_splat_index(::Type{Ellipsis}) = ArrayInterface.static(true)
-ArrayInterface.ndims_index(::Type{Ellipsis}) = ArrayInterface.static(1)
-function ArrayInterface.to_index(x, ::Ellipsis)
-    ntuple(i -> ArrayInterface.indices(x, i), Val(ndims(x)))
+StaticArrayInterface.is_splat_index(::Type{Ellipsis}) = StaticArrayInterface.static(true)
+StaticArrayInterface.ndims_index(::Type{Ellipsis}) = StaticArrayInterface.static(1)
+function StaticArrayInterface.to_index(x, ::Ellipsis)
+    ntuple(i -> StaticArrayInterface.indices(x, i), Val(ndims(x)))
 end
 
 export ..
