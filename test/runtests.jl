@@ -1,4 +1,4 @@
-using ArrayInterface
+using StaticArrayInterface
 using EllipsisNotation
 using Test
 
