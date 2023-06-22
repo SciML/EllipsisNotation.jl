@@ -10,11 +10,11 @@ struct Ellipsis end
 
 """
 Implementation of the notation `..` for indexing arrays. It's similar to the Python
-`...` in that it means 'all of the columns before (or after)'.
+`...` in that it means 'all the columns before (or after)'.
 
 `..` slurps dimensions greedily, meaning that the first occurrence
 of `..` in an index expression creates as many slices as possible. Other
-instances of `..` afterwards are treated simply as slices. Usually, you
+instances of `..` afterward are treated simply as slices. Usually, you
 should only use one instance of `..` in an indexing expression to avoid
 possible confusion.
 
