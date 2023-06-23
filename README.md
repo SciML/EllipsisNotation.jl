@@ -6,12 +6,11 @@
 [![codecov](https://codecov.io/gh/SciML/EllipsisNotation.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/SciML/EllipsisNotation.jl)
 [![Build Status](https://github.com/SciML/EllipsisNotation.jl/workflows/CI/badge.svg)](https://github.com/SciML/EllipsisNotation.jl/actions?query=workflow%3ACI)
 
-[![ColPrac: Contributor's Guide on Collaborative Practices for Community Packages](https://img.shields.io/badge/ColPrac-Contributor's%20Guide-blueviolet)](https://github.com/SciML/ColPrac)
+[![ColPrac: Contributor's Guide on Collaborative Practices for Community Packages](https://img.shields.io/badge/ColPrac-Contributor%27s%20Guide-blueviolet)](https://github.com/SciML/ColPrac)
 [![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&message=SciML&color=9558b2&labelColor=389826)](https://github.com/SciML/SciMLStyle)
 
-
 This implements the notation `..` for indexing arrays. It's similar to the Python
-`...` in that it means "all of the columns before (or after)".
+`...` in that it means "all the columns before (or after)".
 
 # Installation
 
@@ -23,44 +22,47 @@ using EllipsisNotation
 # Example Usage
 
 ```julia
-julia> A = Array{Int}(undef,2,4,2)
+julia> A = Array{Int}(undef, 2, 4, 2)
 
-julia> A[..,1] = [2 1 4 5
-                 2 2 3 6]
+julia> A[.., 1] = [2 1 4 5
+           2 2 3 6]
 
-julia> A[..,2] = [3 2 6 5
-                  3 2 6 6]
+julia> A[.., 2] = [3 2 6 5
+           3 2 6 6]
 
-julia> A[:,:,1] == [2 1 4 5
-                    2 2 3 6]
+julia> A[:, :, 1] == [2 1 4 5
+           2 2 3 6]
 true
 
-julia> A[1,..] = reshape([3 4
-                          5 6
-                          4 5
-                          6 7],1,4,2) # drops singleton dimension
+julia> A[1, ..] = reshape([3 4
+               5 6
+               4 5
+               6 7], 1, 4, 2) # drops singleton dimension
 
 julia> B = [3 4
-            5 6
-            4 5
-            6 7]
+           5 6
+           4 5
+           6 7]
 
-julia> B == reshape(A[1,..],4,2)
+julia> B == reshape(A[1, ..], 4, 2)
 true
 
-julia> A[..,1,2] # Can do as many integers as you want on the end!
+julia> A[.., 1, 2] # Can do as many integers as you want on the end!
+
 ```
 
 For avoiding squeezing dimensions from slicing.
+
 ```julia
-julia> C = ones(3,3,3,3,3);
+julia> C = ones(3, 3, 3, 3, 3);
+
 julia> size(C[1:1, .., 1:1])
 (1, 3, 3, 3, 1)
 ```
 
 Note: `..` slurps dimensions greedily, meaning that the first occurrence
 of `..` in an index expression creates as many slices as possible. Other
-instances of `..` afterwards are treated simply as slices. Usually, you
+instances of `..` afterward are treated simply as slices. Usually, you
 should only use one instance of `..` in an indexing expression to avoid
 possible confusion.
 
