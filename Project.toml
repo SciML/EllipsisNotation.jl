@@ -1,7 +1,7 @@
 name = "EllipsisNotation"
 uuid = "da5c29d0-fa7d-589e-88eb-ea29b0a81949"
 authors = ["Chris Rackauckas <accounts@chrisrackauckas.com>"]
-version = "1.7.0"
+version = "1.8.0"
 
 [deps]
 StaticArrayInterface = "0d7ed370-da01-4f52-bd93-41d350b8b718"
