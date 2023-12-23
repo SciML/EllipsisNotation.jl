@@ -7,5 +7,5 @@ version = "1.8.0"
 StaticArrayInterface = "0d7ed370-da01-4f52-bd93-41d350b8b718"
 
 [compat]
-StaticArrayInterface = "1"
-julia = "1.6"
+StaticArrayInterface = "1.2"
+julia = "1.9"
