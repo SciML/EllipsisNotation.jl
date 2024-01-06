@@ -1,8 +1,0 @@
-[deps]
-Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
-StaticArrayInterface = "0d7ed370-da01-4f52-bd93-41d350b8b718"
-Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
-
-[compat]
-Aqua = "0.8"
-StaticArrayInterface = "1"
