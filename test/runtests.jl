@@ -1,8 +1,6 @@
-using StaticArrayInterface
-using EllipsisNotation
-using Test
+using SafeTestsets
 
-include("qa.jl")
-include("basic.jl")
-include("more_generic.jl")
-include("cartesian.jl")
+@time @safetestset "Quality Assurance" include("qa.jl")
+@time @safetestset "Basic Tests" include("basic.jl")
+@time @safetestset "Generic Tests" include("more_generic.jl")
+@time @safetestset "Cartesian Tests" include("cartesian.jl")

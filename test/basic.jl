@@ -1,4 +1,5 @@
-
+using EllipsisNotation
+using StaticArrayInterface
 @test isempty(detect_ambiguities(EllipsisNotation))
 
 A = Array{Int}(undef, 2, 4, 2)
