@@ -25,24 +25,24 @@ using EllipsisNotation
 julia> A = Array{Int}(undef, 2, 4, 2)
 
 julia> A[.., 1] = [2 1 4 5
-           2 2 3 6]
+                   2 2 3 6]
 
 julia> A[.., 2] = [3 2 6 5
-           3 2 6 6]
+                   3 2 6 6]
 
 julia> A[:, :, 1] == [2 1 4 5
-           2 2 3 6]
+                      2 2 3 6]
 true
 
 julia> A[1, ..] = reshape([3 4
-               5 6
-               4 5
-               6 7], 1, 4, 2) # drops singleton dimension
+                           5 6
+                           4 5
+                           6 7], 1, 4, 2) # drops singleton dimension
 
 julia> B = [3 4
-           5 6
-           4 5
-           6 7]
+            5 6
+            4 5
+            6 7]
 
 julia> B == reshape(A[1, ..], 4, 2)
 true
