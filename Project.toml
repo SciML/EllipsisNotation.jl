@@ -4,12 +4,14 @@ version = "1.8.1"
 authors = ["Chris Rackauckas <accounts@chrisrackauckas.com>"]
 
 [deps]
+PrecompileTools = "aea7be01-6a6a-4083-8856-8a6e6704d82a"
 StaticArrayInterface = "0d7ed370-da01-4f52-bd93-41d350b8b718"
 
 [compat]
 AllocCheck = "0.2"
 Aqua = "0.8"
 ExplicitImports = "1.6"
+PrecompileTools = "1"
 SafeTestsets = "0.1"
 StaticArrayInterface = "1.2"
 Test = "1"
