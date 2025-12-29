@@ -1,7 +1,6 @@
-__precompile__()
-
 module EllipsisNotation
 
+using PrecompileTools: @compile_workload, @setup_workload
 using StaticArrayInterface: StaticArrayInterface
 
 import Base: to_indices, tail
@@ -70,5 +69,52 @@ function StaticArrayInterface.to_index(x, ::Ellipsis)
 end
 
 export ..
+
+@setup_workload begin
+    @compile_workload begin
+        # Precompile common ellipsis indexing patterns for Float64 arrays
+        # 2D arrays
+        A2 = zeros(2, 3)
+        A2[.., 1]
+        A2[1, ..]
+
+        # 3D arrays (most common use case)
+        A3 = zeros(2, 3, 4)
+        A3[.., 1]
+        A3[1, ..]
+        A3[:, .., 1]
+        A3[1, .., 2]
+
+        # 4D arrays
+        A4 = zeros(2, 3, 4, 5)
+        A4[.., 1]
+        A4[1, ..]
+        A4[.., 1, 2]
+        A4[1, 2, ..]
+
+        # 5D arrays
+        A5 = zeros(2, 3, 4, 5, 6)
+        A5[.., 1]
+        A5[1, ..]
+
+        # Int64 arrays (common in indexing operations)
+        B3 = zeros(Int, 2, 3, 4)
+        B3[.., 1]
+        B3[1, ..]
+
+        B4 = zeros(Int, 2, 3, 4, 5)
+        B4[.., 1]
+        B4[1, ..]
+
+        # Float32 arrays (common in GPU/ML workloads)
+        C3 = zeros(Float32, 2, 3, 4)
+        C3[.., 1]
+        C3[1, ..]
+
+        C4 = zeros(Float32, 2, 3, 4, 5)
+        C4[.., 1]
+        C4[1, ..]
+    end
+end
 
 end # module
