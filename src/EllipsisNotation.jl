@@ -2,7 +2,7 @@ __precompile__()
 
 module EllipsisNotation
 
-using StaticArrayInterface
+using StaticArrayInterface: StaticArrayInterface
 
 import Base: to_indices, tail
 

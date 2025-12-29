@@ -1,3 +1,4 @@
+using Test
 using EllipsisNotation
 @testset "CartesianIndex" begin
     A = rand(4, 4, 4, 4, 4)

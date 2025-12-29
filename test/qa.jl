@@ -1,3 +1,4 @@
+using Test
 using EllipsisNotation, Aqua
 @testset "Aqua" begin
     Aqua.find_persistent_tasks_deps(EllipsisNotation)
