@@ -5,3 +5,7 @@ using SafeTestsets
 @time @safetestset "Basic Tests" include("basic.jl")
 @time @safetestset "Generic Tests" include("more_generic.jl")
 @time @safetestset "Cartesian Tests" include("cartesian.jl")
+
+if get(ENV, "GROUP", "all") == "all" || get(ENV, "GROUP", "all") == "nopre"
+    @time @safetestset "Allocation Tests" include("alloc_tests.jl")
+end
