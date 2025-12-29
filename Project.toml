@@ -1,7 +1,7 @@
 name = "EllipsisNotation"
 uuid = "da5c29d0-fa7d-589e-88eb-ea29b0a81949"
-authors = ["Chris Rackauckas <accounts@chrisrackauckas.com>"]
 version = "1.8.1"
+authors = ["Chris Rackauckas <accounts@chrisrackauckas.com>"]
 
 [deps]
 StaticArrayInterface = "0d7ed370-da01-4f52-bd93-41d350b8b718"
@@ -9,6 +9,7 @@ StaticArrayInterface = "0d7ed370-da01-4f52-bd93-41d350b8b718"
 [compat]
 AllocCheck = "0.2"
 Aqua = "0.8"
+ExplicitImports = "1.6"
 SafeTestsets = "0.1"
 StaticArrayInterface = "1.2"
 Test = "1"
@@ -17,8 +18,9 @@ julia = "1.10"
 [extras]
 AllocCheck = "9b6a8646-10ed-4001-bbdc-1d2f46dfbb1a"
 Aqua = "4c88cf16-eb10-579e-8560-4a9242c79595"
+ExplicitImports = "7d51a73a-1435-4ff3-83d9-f097790105c7"
 SafeTestsets = "1bc83da4-3b8d-516f-aca4-4fe02f6d838f"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["AllocCheck", "Aqua", "Test", "SafeTestsets"]
+test = ["AllocCheck", "ExplicitImports", "Aqua", "Test", "SafeTestsets"]
