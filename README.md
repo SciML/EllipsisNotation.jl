@@ -78,3 +78,4 @@ for more details.
 I would like to acknowledge M. Schauer for the `..` notation implementation.
 He had the original idea, I just extended it and put it into a package because
 of how useful it has been to me.
+
