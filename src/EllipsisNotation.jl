@@ -115,6 +115,44 @@ export ..
         C4[.., 1]
         C4[1, ..]
     end
+
+    # Explicit precompile statements to force native code caching
+    # These are needed because getindex/setindex!/to_indices are Base methods
+    # and their specializations may not be cached in the package image otherwise
+
+    # Common getindex patterns
+    for T in (Float64, Float32, Int)
+        # 2D
+        precompile(getindex, (Array{T, 2}, Ellipsis, Int))
+        precompile(getindex, (Array{T, 2}, Int, Ellipsis))
+
+        # 3D - most common use case
+        precompile(getindex, (Array{T, 3}, Ellipsis, Int))
+        precompile(getindex, (Array{T, 3}, Int, Ellipsis))
+        precompile(getindex, (Array{T, 3}, Colon, Ellipsis, Int))
+        precompile(getindex, (Array{T, 3}, Int, Ellipsis, Int))
+
+        # 4D
+        precompile(getindex, (Array{T, 4}, Ellipsis, Int))
+        precompile(getindex, (Array{T, 4}, Int, Ellipsis))
+        precompile(getindex, (Array{T, 4}, Ellipsis, Int, Int))
+        precompile(getindex, (Array{T, 4}, Int, Int, Ellipsis))
+
+        # 5D
+        precompile(getindex, (Array{T, 5}, Ellipsis, Int))
+        precompile(getindex, (Array{T, 5}, Int, Ellipsis))
+    end
+
+    # Common setindex! patterns
+    for T in (Float64, Float32, Int)
+        # 3D
+        precompile(setindex!, (Array{T, 3}, Array{T, 2}, Ellipsis, Int))
+        precompile(setindex!, (Array{T, 3}, Array{T, 2}, Int, Ellipsis))
+
+        # 4D
+        precompile(setindex!, (Array{T, 4}, Array{T, 3}, Ellipsis, Int))
+        precompile(setindex!, (Array{T, 4}, Array{T, 3}, Int, Ellipsis))
+    end
 end
 
 end # module
