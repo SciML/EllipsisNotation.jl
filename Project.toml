@@ -9,6 +9,7 @@ StaticArrayInterface = "0d7ed370-da01-4f52-bd93-41d350b8b718"
 
 [compat]
 AllocCheck = "0.2"
+Pkg = "1"
 PrecompileTools = "1.0.1"
 SafeTestsets = "0.1"
 StaticArrayInterface = "1.2.1"
