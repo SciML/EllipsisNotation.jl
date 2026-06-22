@@ -1,7 +1,6 @@
 module EllipsisNotation
 
 using PrecompileTools: @compile_workload, @setup_workload
-using StaticArrayInterface: StaticArrayInterface
 
 import Base: to_indices, tail
 
@@ -54,21 +53,22 @@ const .. = Ellipsis()
         inds::NTuple{M, Any},
         I::Tuple{Ellipsis, Vararg{Any, N}}
     ) where {M, N}
-    # Align the remaining indices to the tail of the `inds`
-    colons = ntuple(n -> Colon(), M - _ndims_index(I) + 1)
+    # Align the remaining indices to the tail of the `inds`. `Val` keeps the
+    # number of inserted colons in the type domain so the result is type stable.
+    colons = ntuple(Returns(Colon()), Val(M - _ndims_index(I) + 1))
     return to_indices(A, inds, (colons..., tail(I)...))
 end
 
-@inline _ndims_index(inds::Tuple{}) = StaticArrayInterface.static(0)
-@inline function _ndims_index(inds::Tuple)
-    return StaticArrayInterface.ndims_index(inds[1]) + _ndims_index(tail(inds))
-end
+# Number of array dimensions consumed by a tuple of indices. Most index types
+# consume a single dimension; the exceptions below consume several at once.
+@inline _ndims_index(inds::Tuple{}) = 0
+@inline _ndims_index(inds::Tuple) = _ndims_index1(inds[1]) + _ndims_index(tail(inds))
 
-StaticArrayInterface.is_splat_index(::Type{Ellipsis}) = StaticArrayInterface.static(true)
-StaticArrayInterface.ndims_index(::Type{Ellipsis}) = StaticArrayInterface.static(1)
-function StaticArrayInterface.to_index(x, ::Ellipsis)
-    return ntuple(i -> StaticArrayInterface.indices(x, i), Val(ndims(x)))
-end
+@inline _ndims_index1(::Any) = 1
+@inline _ndims_index1(::CartesianIndex{N}) where {N} = N
+@inline _ndims_index1(::AbstractArray{Bool, N}) where {N} = N
+@inline _ndims_index1(::AbstractArray{<:CartesianIndex{N}}) where {N} = N
+@inline _ndims_index1(::Ellipsis) = 1
 
 export ..
 
