@@ -1,6 +1,6 @@
 name = "EllipsisNotation"
 uuid = "da5c29d0-fa7d-589e-88eb-ea29b0a81949"
-version = "1.10.0"
+version = "1.10.1"
 authors = ["Chris Rackauckas <accounts@chrisrackauckas.com>"]
 
 [deps]
@@ -14,7 +14,7 @@ EllipsisNotationStaticArrayInterfaceExt = "StaticArrayInterface"
 
 [compat]
 AllocCheck = "0.2"
-PrecompileTools = "1.0.1"
+PrecompileTools = "1.1"
 SafeTestsets = "0.1"
 SciMLTesting = "1"
 StaticArrayInterface = "1.4.1"
