@@ -3,6 +3,7 @@ using JET
 
 run_qa(
     EllipsisNotation;
+    api_docs_kwargs = (; rendered = true),
     explicit_imports = true,
     ei_kwargs = (;
         # `tail` is a `Base` internal on Julia 1.10 (it is declared public only on
