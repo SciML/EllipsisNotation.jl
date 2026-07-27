@@ -1,14 +1,7 @@
 using SciMLTesting, EllipsisNotation, Test
 using JET
 
-run_qa(
-    EllipsisNotation;
-    ei_kwargs = (;
-        # `tail` is a `Base` internal on Julia 1.10 (it is declared public only on
-        # 1.11+); it is imported here for the `to_indices` / `_ndims_index` machinery.
-        all_explicit_imports_are_public = (; ignore = (:tail,)),
-    ),
-)
+run_qa(EllipsisNotation)
 
 @testset "JET type stability" begin
     @testset "_ndims_index" begin
