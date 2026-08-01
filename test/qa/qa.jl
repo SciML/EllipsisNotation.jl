@@ -5,6 +5,12 @@ using JET
 # so load the weakdeps here to get EllipsisNotationStaticArrayInterfaceExt scanned.
 using StaticArrayInterface
 
+# ExplicitImports silently skips an extension that fails to load, so assert the
+# extension modules actually exist rather than trusting a green run_qa.
+@testset "Extensions loaded" begin
+    @test Base.get_extension(EllipsisNotation, :EllipsisNotationStaticArrayInterfaceExt) !== nothing
+end
+
 run_qa(EllipsisNotation)
 
 @testset "JET type stability" begin
