@@ -1,22 +1,26 @@
 name = "EllipsisNotation"
 uuid = "da5c29d0-fa7d-589e-88eb-ea29b0a81949"
-version = "1.10.4"
+version = "1.11.0"
 authors = ["Chris Rackauckas <accounts@chrisrackauckas.com>"]
 
 [deps]
 PrecompileTools = "aea7be01-6a6a-4083-8856-8a6e6704d82a"
 
 [weakdeps]
+ArrayInterface = "4fba245c-0d91-5ea0-9b3e-6abc04ee57a9"
+Static = "aedffcd0-7271-4cad-89d0-dc628f76c6d3"
 StaticArrayInterface = "0d7ed370-da01-4f52-bd93-41d350b8b718"
 
 [extensions]
-EllipsisNotationStaticArrayInterfaceExt = "StaticArrayInterface"
+EllipsisNotationStaticArrayInterfaceExt = ["ArrayInterface", "Static", "StaticArrayInterface"]
 
 [compat]
 AllocCheck = "0.2"
+ArrayInterface = "7"
 PrecompileTools = "1.1"
 SafeTestsets = "0.1"
 SciMLTesting = "2.4"
+Static = "0.8, 1"
 StaticArrayInterface = "1.4.1"
 Test = "1"
 julia = "1.10"
