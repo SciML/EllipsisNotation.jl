@@ -4,7 +4,18 @@ using PrecompileTools: @compile_workload, @setup_workload
 
 import Base: to_indices, tail
 
+"""
+    Ellipsis
+
+The singleton type of [`..`](@ref). Packages that add `..` support to their own
+array or indexing machinery dispatch on this type, so it is part of the public API
+even though the value `..` is the only instance ever constructed.
+"""
 struct Ellipsis end
+
+@static if VERSION >= v"1.11"
+    eval(Expr(:public, :Ellipsis))
+end
 
 """
 Implementation of the notation `..` for indexing arrays. It's similar to the Python

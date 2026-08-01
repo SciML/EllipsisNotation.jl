@@ -1,6 +1,10 @@
 using SciMLTesting, EllipsisNotation, Test
 using JET
 
+# ExplicitImports only sees an extension module once its trigger package is loaded,
+# so load the weakdeps here to get EllipsisNotationStaticArrayInterfaceExt scanned.
+using StaticArrayInterface
+
 run_qa(EllipsisNotation)
 
 @testset "JET type stability" begin
