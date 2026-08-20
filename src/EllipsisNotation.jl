@@ -30,6 +30,8 @@ possible confusion.
 # Example
 
 ```jldoctest
+julia> using EllipsisNotation
+
 julia> A = Array{Int}(undef, 2, 4, 2);
 
 julia> A[.., 1] = [2 1 4 5
@@ -45,8 +47,7 @@ true
 julia> A[1, ..] = reshape([3 4
                            5 6
                            4 5
-                           6 7], 1, 4, 2) # drops singleton dimension
-...
+                           6 7], 1, 4, 2); # drops singleton dimension
 
 julia> B = [3 4
             5 6

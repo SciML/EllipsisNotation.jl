@@ -6,7 +6,7 @@ makedocs(
     sitename = "EllipsisNotation.jl",
     authors = "Chris Rackauckas",
     modules = [EllipsisNotation],
-    clean = true, doctest = false, linkcheck = true,
+    clean = true, linkcheck = true,
     format = Documenter.HTML(
         assets = ["assets/favicon.ico"],
         canonical = "https://docs.sciml.ai/EllipsisNotation/stable/"
